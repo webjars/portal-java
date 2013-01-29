@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>portal-java</artifactId>
-    <version>0.3-SNAPSHOT</version>
+    <version>0.4-SNAPSHOT</version>
     <name>Portal for Java</name>
     <description>WebJar for Portal for Java</description>
     <url>http://webjars.org</url>
@@ -41,8 +41,8 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>0.2</upstream.version>
-        <upstream.url>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/javascript/src/main/webapp/javascripts</upstream.url>
+        <upstream.version>0.4</upstream.version>
+        <upstream.url>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/javascript/src/main/resources/META-INF/resources/javascripts</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
     </properties>
     
@@ -62,6 +62,18 @@
                         <configuration>
                             <url>${upstream.url}</url>
                             <fromFile>portal-extension.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-min-js</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url}</url>
+                            <fromFile>portal-extension.min.js</fromFile>
                             <toDir>${destDir}</toDir>
                         </configuration>
                     </execution>
