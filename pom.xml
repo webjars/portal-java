@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>portal-java</artifactId>
-    <version>0.5-SNAPSHOT</version>
+    <version>0.6-SNAPSHOT</version>
     <name>Portal for Java</name>
     <description>WebJar for Portal for Java</description>
     <url>http://webjars.org</url>
@@ -41,8 +41,10 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>0.4</upstream.version>
-        <upstream.url>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/javascript/src/main/resources/META-INF/resources/javascripts</upstream.url>
+        <upstream.version>0.6</upstream.version>
+        <upstream.url.core>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/core/src/main/resources/META-INF/resources/portal</upstream.url.core>
+        <upstream.url.atmosphere>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/atmosphere/src/main/resources/META-INF/resources/portal</upstream.url.atmosphere>
+        <upstream.url.play>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/play/src/main/resources/META-INF/resources/portal</upstream.url.play>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
     </properties>
     
@@ -54,32 +56,79 @@
                 <version>1.0-beta-4</version>
                 <executions>
                     <execution>
-                        <id>download-full-js</id>
+                        <id>download-core-js</id>
                         <phase>process-resources</phase>
                         <goals>
                             <goal>download-single</goal>
                         </goals>
                         <configuration>
-                            <url>${upstream.url}</url>
-                            <fromFile>portal-extension.js</fromFile>
+                            <url>${upstream.url.core}</url>
+                            <fromFile>portal.js</fromFile>
                             <toDir>${destDir}</toDir>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>download-min-js</id>
+                        <id>download-core-min-js</id>
                         <phase>process-resources</phase>
                         <goals>
                             <goal>download-single</goal>
                         </goals>
                         <configuration>
-                            <url>${upstream.url}</url>
-                            <fromFile>portal-extension.min.js</fromFile>
+                            <url>${upstream.url.core}</url>
+                            <fromFile>portal.min.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-atmosphere-js</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url.atmosphere}</url>
+                            <fromFile>atmosphere.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-atmosphere-min-js</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url.atmosphere}</url>
+                            <fromFile>atmosphere.min.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-play-js</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url.play}</url>
+                            <fromFile>play.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-play-min-js</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url.play}</url>
+                            <fromFile>play.min.js</fromFile>
                             <toDir>${destDir}</toDir>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
