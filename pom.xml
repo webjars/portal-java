@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>portal-java</artifactId>
-    <version>0.7-SNAPSHOT</version>
+    <version>0.7</version>
     <name>Portal for Java</name>
     <description>WebJar for Portal for Java</description>
     <url>http://webjars.org</url>
@@ -36,7 +36,7 @@
         <url>http://github.com/webjars/portal-java</url>
         <connection>scm:git:https://github.com/webjars/portal-java.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/portal-java.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>portal-java-0.7</tag>
     </scm>
     
     <properties>
