@@ -41,10 +41,11 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>0.6</upstream.version>
+        <upstream.version>0.7</upstream.version>
         <upstream.url.core>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/core/src/main/resources/META-INF/resources/portal</upstream.url.core>
         <upstream.url.atmosphere>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/atmosphere/src/main/resources/META-INF/resources/portal</upstream.url.atmosphere>
         <upstream.url.play>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/play/src/main/resources/META-INF/resources/portal</upstream.url.play>
+        <upstream.url.vertx>https://raw.github.com/flowersinthesand/portal-java/portal-parent-${upstream.version}/vertx/src/main/resources/META-INF/resources/portal</upstream.url.vertx>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${upstream.version}</destDir>
     </properties>
     
@@ -124,6 +125,30 @@
                         <configuration>
                             <url>${upstream.url.play}</url>
                             <fromFile>play.min.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-vertx-js</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url.vertx}</url>
+                            <fromFile>vertx.js</fromFile>
+                            <toDir>${destDir}</toDir>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>download-vertx-min-js</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>download-single</goal>
+                        </goals>
+                        <configuration>
+                            <url>${upstream.url.vertx}</url>
+                            <fromFile>vertx.min.js</fromFile>
                             <toDir>${destDir}</toDir>
                         </configuration>
                     </execution>
